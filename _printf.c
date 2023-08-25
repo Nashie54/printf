@@ -3,9 +3,7 @@
 /**
  * _printf - functions like printf
  * @format: The format string
- *
- * Description: This function prints formatted output.
- * Return: The number of characters printed.
+ * Return: num_char - the number of characters
  */
 int _printf(const char *format, ...)
 {
@@ -18,7 +16,7 @@ int _printf(const char *format, ...)
         return (-1);
     }
 
-    va_start(num_args, conv);
+    va_start(num_args, format);  /* Use 'format' as the second argument */
 
     while (*conv)
     {
@@ -59,6 +57,7 @@ int _printf(const char *format, ...)
                 num_char += strlen;
             }
         }
+
         conv++;
     }
     va_end(num_args);
