@@ -1,5 +1,12 @@
-#ifndef _MAIN_H
-#define _MAIN_H
+#ifndef MAIN_H
+#define MAIN_H
+
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
+
+
+#define BUFFER SIZE 1024;
 
 #define SIZE 2048
 
@@ -27,7 +34,6 @@ int print_HEXA_S(char s, char *output_p, int o_p);
 int print_S_string(va_list vlist, char *output_p, int o_p);
 int print_paddress(va_list vlist, char *output_p, int o_p);
 int print_rot13(va_list vlist, char *output_p, int o_p);
-void print_integer(int x, int *num_char);
 
 /**
  * struct t_format - Struct t_format
