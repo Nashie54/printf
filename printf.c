@@ -1,17 +1,12 @@
 #include "main.h"
 
-/*
- * _printf - functions like printf
- * @format: the format string
- * Return: num_char - the number of characters
- */
 int _printf(const char *format, ...)
 {
 	int num_char = 0;
 	const char *conv = format;
 	va_list num_args;
 
-	if (format == NULL)
+	if (conv == NULL)
 	{
 		return (-1);
 	}
@@ -22,7 +17,7 @@ int _printf(const char *format, ...)
 	{
 		if (*conv != '%')
 		{
-			write(1, conv, 1);
+			putchar(*conv);
 			num_char++;
 		}
 		else
@@ -33,36 +28,31 @@ int _printf(const char *format, ...)
 			{
 				break;
 			}
-
 			if (*conv == '%')
 			{
-				write(1, conv, 1);
+				putchar(*conv);
 				num_char++;
 			}
 			else if (*conv == 'c')
 			{
-				char c = (char)va_arg(num_args, int);
-				write(1, &c, 1);
+				char c = va_arg(num_args, int);
+				putchar(c);
 				num_char++;
 			}
 			else if (*conv == 's')
 			{
 				char *str = va_arg(num_args, char*);
 				int strlen = 0;
-				
 				while (str[strlen] != '\0')
 				{
 					strlen++;
 				}
-				
 				write(1, str, strlen);
 				num_char += strlen;
 			}
 		}
-		
 		conv++;
 	}
-
 	va_end(num_args);
 
 	return num_char;
